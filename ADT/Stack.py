@@ -25,7 +25,7 @@ class Stack:
             return item
 
 # Test code
-if __name__ == "__main__":
+def test():
     stack = Stack()
 
     # Test pushing elements

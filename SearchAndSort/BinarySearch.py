@@ -38,4 +38,4 @@ def binary_search(num):
     if found == False:
         print(f"Number {num} not found in the list {list}")
 
-binary_search(28)
+# binary_search(28)

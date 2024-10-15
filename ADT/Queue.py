@@ -45,7 +45,7 @@ class Queue:
             print()
 
 
-if __name__ == "__main__":
+def test():
     q = Queue()
 
     # Test enQueue

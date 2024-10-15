@@ -33,4 +33,4 @@ def benchmark(times, length):
     print(f"total times of swaps for bubble sort: {total_bubble_swap_counter}, the average in {times} sorts: {avg_bubble_swap_counte}")
     print(f"total times of iteration for insertion sort: {total_insertion_counter}, the average in {times} sorts: {avg_insertion_counter}")
 
-benchmark(100,100)
+# benchmark(100,100)
