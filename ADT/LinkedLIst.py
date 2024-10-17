@@ -21,7 +21,25 @@ class LinkedList:
         for i in range(self.freePointer, length):
             self.list[i] = None
                 
-        print(self.list)
+        print(f"Generated list: {self.list}")
+
+        self.generatePointerList()
+        
+    def generatePointerList(self):
+        self.pointerList = [None for i in range(0, len(self.list) + 2)]
+        
+        self.pointerList[0] = self.nullPointer
+        
+        for i in range(1, len(self.list) + 1):
+            self.pointerList[i] = i - 1
+
+        self.pointerList.remove(None)
+
+        self.pointerList.append(self.nullPointer)
+        self.pointerList.remove(self.startPointer)
+        self.pointerList.remove(self.freePointer)
+        
+        print(f"Generated pointer list: {self.pointerList}")
     
     def find(self, item):
         self.itemPointer = self.startPointer
@@ -51,35 +69,17 @@ class LinkedList:
             
             print(f"{item} inserted at index {self.startPointer}")
 
-    def generatePointerList(self):
-        self.pointerList = [None for i in range(0, len(self.list) + 2)]
-        
-        self.pointerList[0] = self.nullPointer
-        
-        for i in range(1, len(self.list) + 1):
-            self.pointerList[i] = i - 1
-
-        self.pointerList.remove(None)
-
-        self.pointerList.append(self.nullPointer)
-        self.pointerList.remove(self.startPointer)
-        self.pointerList.remove(self.freePointer)
-        
-        print(self.pointerList)
-
     def display(self):
         print(f"Free Pointer: {self.freePointer}")
         print(f"Start Pointer: {self.startPointer}")
-        print("Linked List:", self.list)
-        print("Pointer List:", self.pointerList)
+        print(f"Linked List: {self.list}")
+        print(f"Pointer List: {self.pointerList}")
         
 
 ll = LinkedList()
 
 '''
 ll.generateList(10)
-ll.generatePointerList()
-ll.display
 
 ll.find(95)
 ll.find(20)
