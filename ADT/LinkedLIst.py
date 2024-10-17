@@ -1,14 +1,28 @@
 class LinkedList:
     def __init__(self):
-        self.startPointer = 5
+        self.startPointer = 0
         self.nullPointer = -1
         self.itemPointer = 0
-        self.freePointer = 6
+        self.freePointer = 0
         self.tempPointer = 0
-        self.list = [37, 25, 24, 95, 92, 52, None, None, None, None]
-        self.pointerList = [-1, 0, 1, 2, 3, 4, 7, 8, 9, -1]
         self.found = False
 
+    def generateList(self, length):
+        from random import randint
+        
+        self.list = [None for i in range(0, length)]
+        
+        self.freePointer = randint(1, length -1)
+        self.startPointer = self.freePointer - 1
+        
+        for i in range(0, self.freePointer):
+            self.list[i] = randint(0, 100)
+        
+        for i in range(self.freePointer, length):
+            self.list[i] = None
+                
+        print(self.list)
+    
     def find(self, item):
         self.itemPointer = self.startPointer
         self.found = False
@@ -34,14 +48,39 @@ class LinkedList:
 
             self.list[self.startPointer] = item
             self.pointerList[self.startPointer] = self.tempPointer
+            
+            print(f"{item} inserted at index {self.startPointer}")
+
+    def generatePointerList(self):
+        self.pointerList = [None for i in range(0, len(self.list) + 2)]
+        
+        self.pointerList[0] = self.nullPointer
+        
+        for i in range(1, len(self.list) + 1):
+            self.pointerList[i] = i - 1
+
+        self.pointerList.remove(None)
+
+        self.pointerList.append(self.nullPointer)
+        self.pointerList.remove(self.startPointer)
+        self.pointerList.remove(self.freePointer)
+        
+        print(self.pointerList)
 
     def display(self):
+        print(f"Free Pointer: {self.freePointer}")
+        print(f"Start Pointer: {self.startPointer}")
         print("Linked List:", self.list)
         print("Pointer List:", self.pointerList)
         
 
-'''
 ll = LinkedList()
+
+'''
+ll.generateList(10)
+ll.generatePointerList()
+ll.display
+
 ll.find(95)
 ll.find(20)
 ll.find(100)
