@@ -69,6 +69,26 @@ class LinkedList:
             
             print(f"{item} inserted at index {self.startPointer}")
 
+    def delete(self, item):
+        if self.startPointer == self.nullPointer:
+            print("List is empty")
+        else:
+            self.itemPointer = self.startPointer
+            
+            while (self.list[self.itemPointer] != item) and (self.itemPointer != self.nullPointer):
+                self.itemPointer = self.pointerList[self.itemPointer]
+                
+            if self.list[self.itemPointer] == item:
+                self.pointerList[self.itemPointer] = self.freePointer
+                self.freePointer = self.itemPointer
+                self.list[self.itemPointer] = None
+                print(f"{item} deleted at index {self.itemPointer}")
+            else:
+                print(f"{item} not found in the list")
+                
+            if self.freePointer == self.nullPointer:
+                print("Free pointer points to null")
+                       
     def display(self):
         print(f"Free Pointer: {self.freePointer}")
         print(f"Start Pointer: {self.startPointer}")
@@ -87,5 +107,11 @@ ll.find(100)
 
 ll.insert(99)
 ll.find(99)
+ll.display()
+'''
+
+''' # test delete function
+ll.generateList(10)
+ll.delete(25)
 ll.display()
 '''
