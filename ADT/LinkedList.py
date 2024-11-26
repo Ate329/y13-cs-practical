@@ -24,6 +24,8 @@ class LinkedList:
         print(f"Generated list: {self.list}")
 
         self.generatePointerList()
+
+        return self.list
         
     def generatePointerList(self):
         self.pointerList = [None for i in range(0, len(self.list) + 2)]
@@ -40,6 +42,9 @@ class LinkedList:
         self.pointerList.remove(self.freePointer)
         
         print(f"Generated pointer list: {self.pointerList}")
+        
+        return self.pointerList
+    
     
     def find(self, item):
         self.itemPointer = self.startPointer
