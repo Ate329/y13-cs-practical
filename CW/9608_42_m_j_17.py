@@ -6,7 +6,12 @@ class IslandClass:
         self.Grid = grid
     def HideTreasure(self):
         pass
-    def DigHole(Row, Column):
+    def DigHole(self, Row, Column):
         pass
-    def GetSquare(Row, Column):
-        pass
+    def GetSquare(self, Row, Column):
+        return self.Grid[Row][Column]
+    def DisplayGrid(self):
+        for i in range(10):
+            for j in range(30):
+                print(GetSquare(i, j), end='')
+            print()
