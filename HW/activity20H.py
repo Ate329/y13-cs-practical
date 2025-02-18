@@ -2,29 +2,32 @@ class Tree:
     def __init__(self):
         self.left = None
         self.right = None
-        self.root = None
-        self.num = None
+        self.value = None
 
-    def add_int(self):
-        if self.left == None & self.right == None:
-            self.root = self.num
+    def add_int(self, num):
+        if self.value is None:
+            self.value = num
         else:
-            if self.left != None & self.num < self.root:
-                self.left = self.num
+            if num < self.value:
+                if self.left is None:
+                    self.left = Tree()
+                self.left.add_int(num)
             else:
-                self.left.add_int(self.num)
+                if self.right is None:
+                    self.right = Tree()
+                self.right.add_int(num)
 
-            if self.right != None & self.num > self.root:
-                self.right = self.num
-            else:
-                self.right.add_int(self.num)
-    
     def traverse(self):
-        if self.left != None:
-            print(self.num)
-            traverse()
-        elif self.right != None:
-            print(self.num)
-            traverse()
-        else:
-            break
+        if self.left is not None:
+            self.left.traverse()
+        print(self.value)
+        if self.right is not None:
+            self.right.traverse()
+
+tree = Tree()
+tree.add_int(27)
+tree.add_int(19)
+tree.add_int(36)
+tree.add_int(42)
+tree.add_int(16)
+tree.traverse()
