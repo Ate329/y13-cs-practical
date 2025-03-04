@@ -1,22 +1,39 @@
 import pickle
 
-class student():
+class Student:  # Changed to PascalCase naming convention for classes
     def __init__(self):
         self.name = None
         self.dateofbirth = None
 
+    def __str__(self):  # Added __str__ method for better printing
+        return f"Name: {self.name}, Date of Birth: {self.dateofbirth}"
+
 def read(filename):
-    with open(filename, "rb") as file:
-        print(pickle.load(file))
-        file.close()
+    try:
+        with open(filename, "rb") as file:
+            data = pickle.load(file)
+            print(data)
+            return data
+    except FileNotFoundError:
+        print(f"Error: File '{filename}' not found")
+    except Exception as e:
+        print(f"Error reading file: {e}")
 
 def write(filename, record):
-    with open(filename, "w+b") as file:
-        pickle.dump(record, file)
-        file.close()
+    try:
+        with open(filename, "wb") as file:  # Changed w+b to wb
+            pickle.dump(record, file)
+    except Exception as e:
+        print(f"Error writing to file: {e}")
 
-student_info = student()
-student_info.name, student_info.dateofbirth = "uiiai", "2020/20/20"
+# Create and populate student info
+student_info = Student()
+student_info.name = "uiiai"
+student_info.dateofbirth = "2020/20/20"
 
-write("uiiai", student_info)
-read("uiiai")
+# Add file extension for better practice
+filename = "uiiai.dat"
+
+# Write and read the file
+write(filename, student_info)
+read(filename)
