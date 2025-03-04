@@ -35,3 +35,13 @@ class GiftBox(Scenery):
                  CauseDamage: bool = True, DamagePoints: int = 50):
         super().__init__(PositionX, PositionY, Width, Height, ImageFilename,
                         CauseDamage, DamagePoints)
+        
+
+# test cases
+# Q5C
+scenery = Scenery(100, 100, 100, 100, "scenery.png", True, 10)
+print(scenery.GetScenery())
+
+# Q5Di
+giftbox = GiftBox()
+print(giftbox.GetScenery())
