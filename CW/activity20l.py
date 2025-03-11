@@ -1,9 +1,9 @@
 import pickle
 
 class Student:  # Changed to PascalCase naming convention for classes
-    def __init__(self):
-        self.name = None
-        self.dateofbirth = None
+    def __init__(self, name, dateofbirth):
+        self.name = name
+        self.dateofbirth = dateofbirth
 
     def __str__(self):  # Added __str__ method for better printing
         return f"Name: {self.name}, Date of Birth: {self.dateofbirth}"
@@ -27,9 +27,7 @@ def write(filename, record):
         print(f"Error writing to file: {e}")
 
 # Create and populate student info
-student_info = Student()
-student_info.name = "uiiai"
-student_info.dateofbirth = "2020/20/20"
+student_info = Student("uiiai", "2020/20/20")
 
 # Add file extension for better practice
 filename = "uiiai.dat"
